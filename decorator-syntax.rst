@@ -41,8 +41,10 @@ Rationale
 The change described here requires only a lifting of a deliberate
 restriction, which requires very minimal changes to the Grammar and
 interpreter. Most work will be focused on modifying documentation and
-adding unit tests. Beyond the designs discussed in PEP-318, there were
-no alternative designs considered.
+adding unit tests. Beyond the designs discussed in `PEP-318`_, there
+were no alternative designs considered.
+
+.. _PEP-318: http://www.python.org/dev/peps/pep-0318/
 
 Specification
 =============
