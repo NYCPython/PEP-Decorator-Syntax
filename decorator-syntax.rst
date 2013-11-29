@@ -15,7 +15,12 @@ Resolution: http://bugs.python.org/issue19660
 Abstract
 ========
 
-This PEP provides a relaxed syntax for decorators. Currently, a decorator statement is limited in what it can accept, and arbitrary expressions will not work. The @ sign may be followed only by a dotted name with an optional, single set of parentheses, itself optionally containing an argument list. This restriction was introduced deliberately, and this PEP argues for its relaxation.
+This PEP provides a relaxed syntax for decorators. Currently, a
+decorator statement is limited in what it can accept, and arbitrary
+expressions will not work. The @ sign may be followed only by a dotted
+name with an optional, single set of parentheses, itself optionally
+containing an argument list. This restriction was introduced
+deliberately, and this PEP argues for its relaxation.
 
 Motivation
 ==========
@@ -33,7 +38,11 @@ Motivation
 Rationale
 =========
 
-The change described here requires only a lifting of a deliberate restriction, which requires very minimal changes to the Grammar and interpreter. Most work will be focused on modifying documentation and adding unit tests. Beyond the designs discussed in PEP-318, there were no alternative designs considered.
+The change described here requires only a lifting of a deliberate
+restriction, which requires very minimal changes to the Grammar and
+interpreter. Most work will be focused on modifying documentation and
+adding unit tests. Beyond the designs discussed in PEP-318, there were
+no alternative designs considered.
 
 Specification
 =============
@@ -50,7 +59,7 @@ decorator::
     @spam().eggs
     def foo():
         return 42
-    
+
     @spam()()
     def foo():
         return 42
