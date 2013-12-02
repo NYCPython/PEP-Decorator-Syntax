@@ -25,15 +25,34 @@ deliberately, and this PEP argues for its relaxation.
 Motivation
 ==========
 
-- there is almost no documentation of this restriction. PEP-318 documents it, but the standard documentation only specifies it in terms of the EBNF. Almost no discussions of the language mention this restriction, and it is not widely known.
-- the restriction is a special case to the grammar without an immediately visible reason why; the only other place where a dotted name is used is in the import statement
-- the restriction prevents some arguably useful forms, such as a decorator registry or the chained callable, which current require a wrapping function or some repetition to achieve
+Currently there is little documentation about the syntax that can be
+used for decorators. `PEP-318`_ documents the syntax, but the `Python
+documentation`_ only specifies the syntax using Extended Backus-Naur
+Form (EBNF). There is also little explanation available for why the
+syntax was used.
+
+Upon investigation of the EBNF, these restrictions seem to stand out
+in the grammar. The only other part of the grammar that enforces the
+use of a dotted name is the ``import`` statement.
+
+Relaxing the restrictions imposed on decorators, new, arguably useful
+forms can be introduced. It would be possible to use decorators
+consisting of syntaxes available elsewhere in the grammar. Examples
+include chained callables and a decorator registry. While such
+techniques can be used today, they must be wrapped inside another
+callable or another similar approach.
+
 - some of these restrictions may appear arbitrary a.b() but not a().b
+
 - the wrapper approach makes all of these possible, but unsightly
   _ = lambda x: x
   @_( a().b )
   def foo(): pass
+
 - the restriction serves better as a style guide issue
+
+.. _PEP-318: http://www.python.org/dev/peps/pep-0318/
+.. _Python documentation: http://docs.python.org/3/reference/compound_stmts.html#function-definitions
 
 Rationale
 =========
@@ -41,10 +60,8 @@ Rationale
 The change described here requires only a lifting of a deliberate
 restriction, which requires very minimal changes to the Grammar and
 interpreter. Most work will be focused on modifying documentation and
-adding unit tests. Beyond the designs discussed in `PEP-318`_, there
-were no alternative designs considered.
-
-.. _PEP-318: http://www.python.org/dev/peps/pep-0318/
+adding unit tests. Beyond the designs discussed in PEP-318, there were
+no alternative designs considered.
 
 Specification
 =============
